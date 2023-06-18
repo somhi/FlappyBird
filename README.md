@@ -14,4 +14,10 @@ Flappy Bird is an arcade-style game launched in May 2013 and gained popularity i
 
 
 
-![flappy](flappy.png)
+MiST & DeMiSTify  F12 opens OSD.
+
+For DeMiSTify swap joystick on OSD
+
+
+
+![flappy](flappy.jpg)
