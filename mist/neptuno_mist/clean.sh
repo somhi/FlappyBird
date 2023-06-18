@@ -1,6 +1,4 @@
-find output_files/ -type f \( ! -iname "*.sof" ! -iname "*.svf" ! -iname "*.flow.rpt" \) -delete
-rm -f output_files/menu_pof.svf
-#find output_files/  -type f -not -name '*.sof' -delete
+find output_files/ -type f \(  ! -iname "*.sof"  ! -iname "*.np1" ! -iname "*.rbf" ! -iname "*.flow.rpt" \) -delete
 find software/spl_bsp/ -type f -not -name '*.bin' -delete
 #rm -rf output_files
 #rm -rf software
