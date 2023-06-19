@@ -37,27 +37,29 @@ constant demistify_serialdebug : std_logic := '0';
 		PORT
 		(
 			CLOCK_27 	:	IN STD_LOGIC;	-- Comment out one of these two lines
-			LED			:	 OUT STD_LOGIC;
+			LED			:	OUT STD_LOGIC;
 
-			SPI_DO		:	 INOUT STD_LOGIC;
-			SPI_DI		:	 IN STD_LOGIC;
-			SPI_SCK		:	 IN STD_LOGIC;
-			SPI_SS2		:	 IN STD_LOGIC;
-			SPI_SS3		:	 IN STD_LOGIC;
-			SPI_SS4		:	 IN STD_LOGIC;
-			CONF_DATA0	:	 IN STD_LOGIC;
+			SPI_DO		:	INOUT STD_LOGIC;
+			SPI_DI		:	IN STD_LOGIC;
+			SPI_SCK		:	IN STD_LOGIC;
+			SPI_SS2		:	IN STD_LOGIC;
+			SPI_SS3		:	IN STD_LOGIC;
+			SPI_SS4		:	IN STD_LOGIC;
+			CONF_DATA0	:	IN STD_LOGIC;
 
-			VGA_HS		:	 OUT STD_LOGIC;
-			VGA_VS		:	 OUT STD_LOGIC;
-			VGA_R		:	 OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
-			VGA_G		:	 OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
-			VGA_B		:	 OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
+			VGA_HS		:	OUT STD_LOGIC;
+			VGA_VS		:	OUT STD_LOGIC;
+			VGA_R		:	OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
+			VGA_G		:	OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
+			VGA_B		:	OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
 
-			AUDIO_L  	: out std_logic;
-			AUDIO_R  	: out std_logic;
+			AUDIO_L  	: 	OUT STD_LOGIC;
+			AUDIO_R  	: 	OUT STD_LOGIC;
 			--D AUDIO 
-			DAC_L       	: out signed(15 downto 0);
-			DAC_R       	: out signed(15 downto 0)   
+			DAC_L       : 	OUT SIGNED(15 downto 0);
+			DAC_R       : 	OUT SIGNED(15 downto 0);
+			
+			KEY			: 	IN  STD_LOGIC_VECTOR(1 DOWNTO 0)
 		);
 	END COMPONENT;
 	

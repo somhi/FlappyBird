@@ -124,13 +124,15 @@ architecture RTL of uareloaded_top is
 
 	signal act_led : std_logic;
 
+	signal keys_R_F 	: std_logic_vector(1 downto 0);
+
 	-- UNAMIGA target guest_top template signals
 	alias clock_input 	: std_logic is CLOCK_50;
 	alias audio_input	: std_logic is AUDIO_IN;
 	
 begin
 
-
+	keys_R_F <= "11";
 
 	-- External devices tied to GPIOs
 	ps2_mouse_dat_in <= PS2_MOUSE_DAT;
@@ -179,13 +181,7 @@ begin
 			dac_LRCK  => LRCLK,
 			L_data    => std_logic_vector(dac_l),
 			R_data    => std_logic_vector(dac_r)
-		--  L_data    => std_logic_vector(dac_l_s),
-		--  R_data    => std_logic_vector(dac_r_s)
 		);
-
-	--dac_l_s <= ('0' & dac_l(14 downto 0));
-	--dac_r_s <= ('0' & dac_r(14 downto 0));
-
 
 
 
@@ -216,8 +212,9 @@ begin
 			DAC_L   => dac_l,
 			DAC_R   => dac_r,
 			AUDIO_L => sigma_l,
-			AUDIO_R => sigma_r
-	
+			AUDIO_R => sigma_r,
+
+			KEY 	=> keys_R_F
 		);
 	
 

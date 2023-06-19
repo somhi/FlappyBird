@@ -14,9 +14,25 @@ Flappy Bird is an arcade-style game launched in May 2013 and gained popularity i
 
 
 
-MiST & DeMiSTify  F12 opens OSD.
+**MiST**
 
-For DeMiSTify swap joystick on OSD
+* F12 opens OSD
+
+**DeMiSTify**
+
+* F12 opens OSD
+
+* F12 long press changes resolution (640x480, 1280x1024)
+
+  
+
+### **Controls**
+
+* Keyboard controls: Control = Flap, Alt Gr = Reset
+* Joystick controls:  Fire B = Flap, Fire C = Reset     (depends on joy mapping)  (if joystick does now work swap it in OSD)
+* FPGA buttons controls: KEY0 = Flap, KEY1 = Reset  (depends on board available buttons)
+
+
 
 
 

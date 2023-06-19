@@ -269,16 +269,19 @@ architecture RTL of deca_top is
 		);
 	end component;
 
-	signal act_led : std_logic;
+	signal act_led 		: std_logic;
+
+	signal keys_R_F 	: std_logic_vector(1 downto 0);
 
 	-- DECA target guest_top template signals
 	alias clock_input 	: std_logic is MAX10_CLK1_50;
 	alias audio_input	: std_logic is EAR;	
-	alias sigma_l : std_logic is DETO1_PMOD2_6;
-	alias sigma_r : std_logic is DETO2_PMOD2_7;
+	alias sigma_l 		: std_logic is DETO1_PMOD2_6;
+	alias sigma_r 		: std_logic is DETO2_PMOD2_7;
 
 begin
 
+	keys_R_F <= KEY;
 
 	-- SPI
 	SD_CS_N_O <= sd_cs;
@@ -466,13 +469,9 @@ begin
 			DAC_L   => dac_l,
 			DAC_R   => dac_r,
 			AUDIO_L => sigma_l,
-			AUDIO_R => sigma_r
+			AUDIO_R => sigma_r,
 
-			--PS2
-			-- PS2K_CLK => ps2_keyboard_clk_in or intercept, -- Block keyboard when OSD is active
-			-- PS2K_DAT => ps2_keyboard_dat_in,
-			-- PS2M_CLK => ps2_mouse_clk_in,
-			-- PS2M_DAT => ps2_mouse_dat_in
+			KEY 	=> keys_R_F
 		);
 
 

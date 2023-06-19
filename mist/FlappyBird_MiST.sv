@@ -24,6 +24,8 @@ output        AUDIO_R,
 `ifdef DEMISTIFY
 output [15:0] DAC_L,
 output [15:0] DAC_R,
+
+input	[1:0] KEY,
 `endif
 
 `ifdef NEPTUNO
@@ -45,9 +47,15 @@ output        SDRAM_CKE
 );
 
 `ifdef NEPTUNO
-//disable STM32 NeptUNO FPGA
-assign STM_RST_O = 1'b0;
+assign STM_RST_O = 1'b0;	//disable STM32 NeptUNO FPGA
 `endif
+
+`ifndef NEPTUNO
+`ifndef DEMISTIFY
+wire	[1:0] KEY = 2'b11;	
+`endif
+`endif
+
 
 
 assign LED  = 0;
@@ -74,13 +82,7 @@ always @(posedge clk) begin
 	end
 end
 
-
-`ifdef NEPTUNO
 wire reset = reset_OSD | buttons[1] | ~KEY[1];
-`else
-wire reset = reset_OSD | buttons[1];
-`endif
-
 
 wire [31:0] status;
 
@@ -154,12 +156,13 @@ wire vsync, hsync, vblank, hblank, red, green, blue;
 
 TopModule Flappy (
 	.Clk		(clk),
-	`ifdef NEPTUNO
-	.Button		(~m_fire2[0] & KEY[0]),
+	`ifdef DEMISTIFY
+	.Button		(~m_fire1[0] & KEY[0]),
+	.sys_reset	(~(reset | m_fire1[1])),	
 	`else
-	.Button		(~m_fire2[0]),
-	`endif
+	.Button		(~m_fire2[0] & KEY[0]),
 	.sys_reset	(~(reset | m_fire2[1])),	
+	`endif
 	.vga_h_sync	(hsync),
 	.vga_v_sync	(vsync),
 	.vga_h_blank(hblank),
@@ -189,7 +192,7 @@ mist_video #(.COLOR_DEPTH(6), .SD_HCNT_WIDTH(10), .USE_BLANKS(1)) mist_video
 	.VGA_B          ( VGA_B            ),
 	.VGA_VS         ( VGA_VS           ),
 	.VGA_HS         ( VGA_HS           ),
-	.scandoubler_disable( scandoublerD ),
+	.scandoubler_disable( ~scandoublerD ),
 	.scanlines      ( scanlines        )
 );
 

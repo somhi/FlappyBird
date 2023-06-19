@@ -37,3 +37,7 @@ c5_pin_model_dump.txt
 *~
 *.xml
 *.cdf
+*.o
+*.asm
+controller.bin
+controller.map

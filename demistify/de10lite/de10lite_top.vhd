@@ -123,10 +123,14 @@ architecture RTL of de10lite_top is
 
 	signal act_led : std_logic;
 	
+	signal keys_R_F 	: std_logic_vector(1 downto 0);
+
 	-- DE10lite target guest_top template signals
 	alias clock_input 		: std_logic is MAX10_CLK1_50;
 
 begin
+
+keys_R_F <= KEY;
 
 HEX0<=(others=>'1');
 HEX1<=(others=>'1');
@@ -202,8 +206,9 @@ guest : component FlappyBird_MiST
 		-- DAC_L   => dac_l,
 		-- DAC_R   => dac_r,
 		AUDIO_L => sigma_l,
-		AUDIO_R => sigma_r
+		AUDIO_R => sigma_r,
 
+		KEY 	=> keys_R_F
 	);
 
 

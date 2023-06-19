@@ -220,6 +220,8 @@ architecture RTL of atlas_top is
 
 	signal act_led : std_logic;
 
+	signal keys_R_F 	: std_logic_vector(1 downto 0);
+
 	-- ATLAS CYC1000 target guest_top template signals
 	signal clock_input 			: std_logic;
 	--alias clock_input 		: std_logic is CLK12M;
@@ -230,6 +232,8 @@ architecture RTL of atlas_top is
 begin
 
 	clock_input <= CLK50M;		-- from pll2
+
+	keys_R_F <= '1' & KEY0;
 
 	-- SPI
 	SD_CS_N_O <= sd_cs;
@@ -382,10 +386,6 @@ begin
 		-- HDMI AUDIO
 		sound_hdmi_l_s <= dac_l;
 		sound_hdmi_r_s <= dac_r;
-		-- sound_hdmi_l_s <= '0' & std_logic_vector(dac_l(15 downto 1));
-		-- sound_hdmi_r_s <= '0' & std_logic_vector(dac_r(15 downto 1));
-		-- sound_hdmi_l_s <= std_logic_vector(dac_l);
-		-- sound_hdmi_r_s <= std_logic_vector(dac_r);
 
 		------------------------------------------------------------------------------------------------------
 		-- JUST LEAVE ONE HDMI WRAPPER (1/2/3) UNCOMMENTED                                                  --
@@ -506,7 +506,6 @@ begin
 
 
 
-
 	guest : component FlappyBird_MiST
 		port map
 		(
@@ -534,11 +533,11 @@ begin
 			-- DAC_L   => dac_l,
 			-- DAC_R   => dac_r,
 			AUDIO_L => sigma_l,
-			AUDIO_R => sigma_r
-	
+			AUDIO_R => sigma_r,
+
+			KEY 	=> keys_R_F
 		);
 	
-
 
 	-- Pass internal signals to external SPI interface
 	sd_clk <= spi_clk_int;
@@ -593,6 +592,6 @@ begin
 			intercept => intercept
 		);
 
-	LED <= (0 => not act_led, others => '1');
+	LED <= (0 => not act_led, others => '0');
 
 end rtl;

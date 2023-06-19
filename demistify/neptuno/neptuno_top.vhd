@@ -189,12 +189,16 @@ architecture RTL of neptuno_top is
 
 	signal act_led : std_logic;
 
+	signal keys_R_F 	: std_logic_vector(1 downto 0);
+
 	-- NeptUNO target guest_top template signals
 	alias clock_input 	: std_logic is CLOCK_50_I;
 	alias uart_txd 		: std_logic is PMOD4_D5;
 	alias uart_rxd 		: std_logic is PMOD4_D4;
 	
 begin
+
+	keys_R_F <= KEY;
 
 	-- -- SRAM
 	-- SRAM_OE <= '0';
@@ -299,7 +303,9 @@ begin
 			DAC_L   => dac_l,
 			DAC_R   => dac_r,
 			AUDIO_L => sigma_l,
-			AUDIO_R => sigma_r
+			AUDIO_R => sigma_r,
+
+			KEY 	=> keys_R_F
 	
 		);
 	
