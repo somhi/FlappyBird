@@ -1,46 +1,46 @@
 module deca_mist_top (
-    input  	 MAX10_CLK1_50,
+    input  	      MAX10_CLK1_50,
 
-    input [1:0]    KEY,
+    input [1:0]   KEY,
 
     // LED outputs
-    output [7:0]   LED,
+    output [7:0]  LED,
 
     // SDRAM interface
-    inout  [15:0]  DRAM_DQ, // SDRAM Data bus 16 Bits
-    output [12:0]  DRAM_ADDR, // SDRAM Address bus 13 Bits
-    output 	       DRAM_LDQM, // SDRAM Low-byte Data Mask
-    output 	       DRAM_UDQM, // SDRAM High-byte Data Mask
-    output 	       DRAM_WE_N, // SDRAM Write Enable
-    output 	       DRAM_CAS_N, // SDRAM Column Address Strobe
-    output         DRAM_RAS_N, // SDRAM Row Address Strobe
-    output 	       DRAM_CS_N, // SDRAM Chip Select
-    output [1:0]   DRAM_BA, // SDRAM Bank Address
-    output 	       DRAM_CLK, // SDRAM Clock
-    output 	       DRAM_CKE, // SDRAM Clock Enable
+    inout  [15:0] DRAM_DQ,       // SDRAM Data bus 16 Bits
+    output [12:0] DRAM_ADDR,     // SDRAM Address bus 13 Bits
+    output 	      DRAM_LDQM,     // SDRAM Low-byte Data Mask
+    output 	      DRAM_UDQM,     // SDRAM High-byte Data Mask
+    output 	      DRAM_WE_N,     // SDRAM Write Enable
+    output 	      DRAM_CAS_N,    // SDRAM Column Address Strobe
+    output        DRAM_RAS_N,    // SDRAM Row Address Strobe
+    output 	      DRAM_CS_N,     // SDRAM Chip Select
+    output [1:0]  DRAM_BA,       // SDRAM Bank Address
+    output 	      DRAM_CLK,      // SDRAM Clock
+    output 	      DRAM_CKE,      // SDRAM Clock Enable
 
     // SPI interface to arm io controller
-    inout 	 SPI_MISO_WSBD, //SPI_DO,
-    input 	 SPI_MOSI,      //SPI_DI,
-    input 	 SPI_SCLK_DABD, //SPI_SCK,
-    input 	 SPI_CS2,       //SPI_SS2,    (FPGA)
-    input 	 SPI_CS0_CLKBD, //SPI_SS3,    (OSD)
-    input 	 SPI_CS1,       //CONF_DATA0, (USER_IO)
-    input 	 SPI_SS4,       //SPI_SS4,    (SD DIRECT)
-//  input    RESET_N,       //RESET FROM SAM7S BUTTON
+    inout 	      SPI_MISO_WSBD, //SPI_DO,
+    input 	      SPI_MOSI,      //SPI_DI,
+    input 	      SPI_SCLK_DABD, //SPI_SCK,
+    input 	      SPI_CS2,       //SPI_SS2,    (FPGA)
+    input 	      SPI_CS0_CLKBD, //SPI_SS3,    (OSD)
+    input 	      SPI_CS1,       //CONF_DATA0, (USER_IO)
+    input 	      SPI_SS4,       //SPI_SS4,    (SD DIRECT)
+//  input         RESET_N,       //RESET FROM SAM7S BUTTON
 
     // Audio DAC DECA
-    output I2S_MCK,		//AUDIO_MCLK
-    output I2S_SCK,		//AUDIO_BCLK
-    output I2S_LR,		//AUDIO_WCLK
-    output I2S_D,		//AUDIO_DIN_MFP1
-    inout  AUDIO_GPIO_MFP5,
-    input  AUDIO_MISO_MFP4,
-    inout  AUDIO_RESET_n,
-    output AUDIO_SCLK_MFP3,
-    output AUDIO_SCL_SS_n,
-    inout  AUDIO_SDA_MOSI,
-    output AUDIO_SPI_SELECT,
+    output        I2S_MCK,		//AUDIO_MCLK
+    output        I2S_SCK,		//AUDIO_BCLK
+    output        I2S_LR,		  //AUDIO_WCLK
+    output        I2S_D,		  //AUDIO_DIN_MFP1
+    inout         AUDIO_GPIO_MFP5,
+    input         AUDIO_MISO_MFP4,
+    inout         AUDIO_RESET_n,
+    output        AUDIO_SCLK_MFP3,
+    output        AUDIO_SCL_SS_n,
+    inout         AUDIO_SDA_MOSI,
+    output        AUDIO_SPI_SELECT,
 
     //VIDEO
     output 	      VGA_HS,
@@ -95,13 +95,14 @@ module deca_mist_top (
 
   );
 
+  wire   RESET_DELAY_n;
+
   // VIDEO bits assignation
   assign VGA_R = r_aux[5:2];
   assign VGA_G = g_aux[5:2];
   assign VGA_B = b_aux[5:2];
 
   // AUDIO CODEC
-  wire   RESET_DELAY_n;
   assign RESET_DELAY_n = 1'b1;     // BUTTON;
 
   // Audio DAC DECA Output assignments
