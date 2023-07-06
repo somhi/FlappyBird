@@ -431,8 +431,7 @@ module core_top (
             .datatable_addr         ( datatable_addr ),
             .datatable_wren         ( datatable_wren ),
             .datatable_data         ( datatable_data ),
-            .datatable_q            ( datatable_q ),
-
+            .datatable_q            ( datatable_q )
         );
 
     //! ------------------------------------------------------------------------------------
@@ -562,7 +561,7 @@ module core_top (
 
             .BTN_R1 ( p1_btn_r1 ),
             .BTN_SE ( p1_coin   ),
-            .BTN_ST ( p1_start  ),
+            .BTN_ST ( p1_start  )
         );
     //! Player 2 ---------------------------------------------------------------------------
     wire p2_coin, p2_start;
@@ -587,7 +586,7 @@ module core_top (
             .BTN_Y  ( p2_btn_y ),
 
             .BTN_SE ( p2_coin  ),
-            .BTN_ST ( p2_start ),
+            .BTN_ST ( p2_start )
         );
 
     wire m_up        = p1_up     | p2_up;
