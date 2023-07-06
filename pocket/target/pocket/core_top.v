@@ -655,7 +655,7 @@ module core_top (
     //! ------------------------------------------------------------------------------------
     //! Audio
     //! ------------------------------------------------------------------------------------
-    assign flappy_snd = {1'b0, flappy_speaker, 14'd0};
+    assign flappy_snd = {1'b0, flappy_speaker, 9'd0};
 
     sound_i2s #(.CHANNEL_WIDTH(11))
               sound_i2s (
