@@ -1,0 +1,2 @@
+set_global_assignment -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "data_loader.sv"]
+set_global_assignment -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "data_unloader.sv"]

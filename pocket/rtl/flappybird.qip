@@ -1,0 +1,15 @@
+# ==============================================================================
+# RTL
+# ==============================================================================
+#set_global_assignment -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) FlappyBird_MiST.sv]
+set_global_assignment -name QIP_FILE [file join $::quartus(qip_path) ../../rtl/files.qip]
+#set_global_assignment -name QIP_FILE [file join $::quartus(qip_path) "../mist-modules/mist.qip"]
+#set_global_assignment -name QIP_FILE [file join $::quartus(qip_path) ../../demistify/pll/50/pll_mist.qip]
+
+#set_global_assignment -name VERILOG_MACRO "NEPTUNO=1"
+
+
+# ==============================================================================
+# MODULES
+# ==============================================================================
+

@@ -1,0 +1,34 @@
+{
+    "core": {
+        "magic": "APF_VER_1",
+        "metadata": {
+            "platform_ids": ["flappybird"],
+            "shortname": "flappybird",
+            "description": "Flappy Bird is an arcade-style game launched in May 2013 and gained popularity in early 2014",
+            "author": "somhi",
+            "url": "https://github.com/somhi/FlappyBird",
+            "version": "1.0.0",
+            "date_release": "2023-07-05"
+        },
+        "framework": {
+            "target_product": "Analogue Pocket",
+            "version_required": "1.1",
+            "sleep_supported": false,
+            "dock": {
+                "supported": true,
+                "analog_output": false
+            },
+            "hardware": {
+                "link_port": false,
+                "cartridge_adapter": -1
+            }
+        },
+        "cores": [
+            {
+                "name": "default",
+                "id": 0,
+                "filename": "flappy.rbf_r"
+            }
+        ]
+    }
+}

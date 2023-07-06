@@ -37,6 +37,7 @@ Flappy Bird is an arcade-style game launched in May 2013 and gained popularity i
 
 ## Other Ports
 
+* [Gehstock MiST port](https://github.com/Gehstock/Mist_FPGA/tree/master/Arcade_MiST/Non%20Arcade/FlappyBird_MiST).  Didn't know it existed before porting mine from MiSTer 🤣
 * MiSTex port https://github.com/somhi/FlappyBird_MiSTeX
 * Flappy Bird on FPGA using VHDL https://github.com/gaikwadabhishek/flappy-bird-fpga-vhdl (from which I took the History paragraph)
 
