@@ -46,3 +46,11 @@ Flappy Bird is an arcade-style game launched in May 2013 and gained popularity i
 
 
 ![flappy](flappy.jpg)
+
+
+
+## Credits
+
+Thanks to @dyreschlock for Pocket platform image 
+
+![pocket](pocket.jpg)
