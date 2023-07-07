@@ -1,0 +1,28 @@
+<?xml version="1" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW2AR-18C" pn="GW2AR-LV18QN88C8/I7">gw2ar18c-000</Device>
+    <FileList>
+        <File path="/home/jordi/Documents/Coding/Github/FlappyBird/gowin/tangnano20k/src/dualshock_controller.v" type="file.verilog" enable="1"/>
+        <File path="/home/jordi/Documents/Coding/Github/FlappyBird/gowin/tangnano20k/src/flappybird_tangnano20k.v" type="file.verilog" enable="1"/>
+        <File path="/home/jordi/Documents/Coding/Github/FlappyBird/gowin/tangnano20k/src/gowin_clkdiv/gowin_clkdiv.v" type="file.verilog" enable="1"/>
+        <File path="/home/jordi/Documents/Coding/Github/FlappyBird/gowin/tangnano20k/src/gowin_rpll/gowin_rpll.v" type="file.verilog" enable="1"/>
+        <File path="/home/jordi/Documents/Coding/Github/FlappyBird/rtl/DrawBackground.v" type="file.verilog" enable="1"/>
+        <File path="/home/jordi/Documents/Coding/Github/FlappyBird/rtl/DrawBird.v" type="file.verilog" enable="1"/>
+        <File path="/home/jordi/Documents/Coding/Github/FlappyBird/rtl/DrawBoard.v" type="file.verilog" enable="1"/>
+        <File path="/home/jordi/Documents/Coding/Github/FlappyBird/rtl/DrawItem.v" type="file.verilog" enable="1"/>
+        <File path="/home/jordi/Documents/Coding/Github/FlappyBird/rtl/DrawOnBackground.v" type="file.verilog" enable="1"/>
+        <File path="/home/jordi/Documents/Coding/Github/FlappyBird/rtl/DrawPipes.v" type="file.verilog" enable="1"/>
+        <File path="/home/jordi/Documents/Coding/Github/FlappyBird/rtl/DrawPipes2.v" type="file.verilog" enable="1"/>
+        <File path="/home/jordi/Documents/Coding/Github/FlappyBird/rtl/DrawScore.v" type="file.verilog" enable="1"/>
+        <File path="/home/jordi/Documents/Coding/Github/FlappyBird/rtl/Pattern.v" type="file.verilog" enable="1"/>
+        <File path="/home/jordi/Documents/Coding/Github/FlappyBird/rtl/SlowClock.v" type="file.verilog" enable="1"/>
+        <File path="/home/jordi/Documents/Coding/Github/FlappyBird/rtl/Sound.v" type="file.verilog" enable="1"/>
+        <File path="/home/jordi/Documents/Coding/Github/FlappyBird/rtl/StatusChecker.v" type="file.verilog" enable="1"/>
+        <File path="/home/jordi/Documents/Coding/Github/FlappyBird/rtl/TopModule.v" type="file.verilog" enable="1"/>
+        <File path="/home/jordi/Documents/Coding/Github/FlappyBird/rtl/VGAOut.v" type="file.verilog" enable="1"/>
+        <File path="/home/jordi/Documents/Coding/Github/FlappyBird/gowin/tangnano20k/src/flappybird_tangnano20k.cst" type="file.cst" enable="1"/>
+    </FileList>
+</Project>
