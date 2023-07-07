@@ -4,3 +4,6 @@
 [submodule "demistify/DeMiSTify"]
 	path = demistify/DeMiSTify
 	url = https://github.com/robinsonb5/DeMiSTify.git
+[submodule "mistex"]
+	path = mistex
+	url = https://github.com/somhi/FlappyBird_MiSTeX
