@@ -11,18 +11,18 @@ module FlappyBird_tangnano20k
 	    output [2:0] tmds_d_n,
 	    output [2:0] tmds_d_p,
 
-		//VGA
+		// VGA
 		output [2:0] vga_r,
 		output [2:0] vga_g,
 		output [2:0] vga_b,
 		output 		 vga_hs,
 		output 		 vga_vs,
 
-        //AUDIO
+        // AUDIO
 		output 	pwm_audio_out_l,
 		output 	pwm_audio_out_r,
 
-        //PS/2
+        // PS2
 		inout 	ps2_clk,
 		inout 	ps2_dat,
 
@@ -32,9 +32,9 @@ module FlappyBird_tangnano20k
 		input   joystick_miso2,
 		output  joystick_cs2,
 
-        //Buttons
-		input 	SW1
-
+        // Buttons
+		input 	SW1,
+		input 	SW2		
 	);
 
 	
@@ -55,16 +55,14 @@ module FlappyBird_tangnano20k
 	  .resetn(pll_lock)
 	);
 
-
+	// Flappy topmodule instantiation
 	wire vsync, hsync, vblank, hblank, red, green, blue;
 	wire speaker;
 
 	TopModule Flappy (
 		.Clk		(clk_p),
-		// .Button		(~m_fire1[0] & KEY[0]),
-		// .sys_reset	(~(reset | m_fire1[1])),	
 		.Button		(~(nes_btn[0] | SW1)),
-		.sys_reset	(~(1'b0 | nes_btn[1])),
+		.sys_reset	(~(nes_btn[1] | SW2)),
 		.vga_h_sync	(hsync),
 		.vga_v_sync	(vsync),
 		.vga_h_blank(hblank),
@@ -200,41 +198,3 @@ module FlappyBird_tangnano20k
 
 
 endmodule
-
-
-
-
-////////////////////////////////////////
-// MODULE PORTS NOT USED IN THIS CORE //
-////////////////////////////////////////
-
-//SDRAM
-// output O_sdram_clk,
-// output O_sdram_cke,
-// output O_sdram_cas_n,           // columns address select
-// output O_sdram_ras_n,           // row address select
-// output O_sdram_cs_n,            // chip select
-// output O_sdram_wen_n,           // write enable
-// output  [1:0] O_sdram_ba,        // four banks
-// output [10:0] O_sdram_addr,     // 11 bit multiplexed address bus
-// inout  [31:0] IO_sdram_dq,       // 32 bit bidirectional data bus
-// output  [3:0] O_sdram_dqm,       // 32/4
-
-//RS232
-// input UART_RXD,
-// output UART_TXD,
-//input RX_EXT,
-//output TX_EXT,
-
-//uSD
-// output SD_nCS,
-// output SD_DI,
-// output SD_CK,
-// input  SD_DO,
-
-//I/O
-//inout [3:0]GPIO
-
-//LEDs
-// output LED0,
-// output LED3
