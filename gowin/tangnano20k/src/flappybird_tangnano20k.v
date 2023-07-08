@@ -6,17 +6,17 @@ module FlappyBird_tangnano20k
 		input SYS_CLK,        
 
         // HDMI
-	    // output       tmds_clk_n,
-	    // output       tmds_clk_p,
-	    // output [2:0] tmds_d_n,
-	    // output [2:0] tmds_d_p,
+	    output       tmds_clk_n,
+	    output       tmds_clk_p,
+	    output [2:0] tmds_d_n,
+	    output [2:0] tmds_d_p,
 
 		// VGA
-		output [2:0] vga_r,
-		output [2:0] vga_g,
-		output [2:0] vga_b,
-		output 		 vga_hs,
-		output 		 vga_vs,
+		// output [2:0] vga_r,
+		// output [2:0] vga_g,
+		// output [2:0] vga_b,
+		// output 		 vga_hs,
+		// output 		 vga_vs,
 
         // AUDIO
 		output 	pwm_audio_out_l,
@@ -115,15 +115,34 @@ module FlappyBird_tangnano20k
 	
 
 	// VGA video
-	assign vga_r  = {3{red}};
-	assign vga_g  = {3{green}};
-	assign vga_b  = {3{blue}};
-	assign vga_hs = hsync;
-	assign vga_vs = vsync;
+	// assign vga_r  = {3{red}};
+	// assign vga_g  = {3{green}};
+	// assign vga_b  = {3{blue}};
+	// assign vga_hs = hsync;
+	// assign vga_vs = vsync;
 
 
 	// DVI video
+	svo_hdmi_out u_hdmi (
+	   .resetn		(1'b1 | pll_lock),
+	   //video clocks
+	   .clk_pixel	(clk_p),
+	   .clk_5x_pixel(clk_p5),
+	   .locked		(pll_lock),
+		//input VGA
+	   .rout		({6{red}}),
+	   .gout		({6{green}}),
+	   .bout		({6{blue}}),
+	   .hsync_n		(~hsync),
+	   .vsync_n		(~vsync),
+	   .blank		(hblank | vblank),
+	   //output signals
+	   .tmds_clk_n	(tmds_clk_n),
+	   .tmds_clk_p	(tmds_clk_p),
+	   .tmds_d_n	(tmds_d_n),
+	   .tmds_d_p	(tmds_d_p),
+	   .tmds_ts		()
+	);
 
-	
 
 endmodule
