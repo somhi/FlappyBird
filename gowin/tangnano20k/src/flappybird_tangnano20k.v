@@ -6,10 +6,10 @@ module FlappyBird_tangnano20k
 		input SYS_CLK,        
 
         // HDMI
-	    output       tmds_clk_n,
-	    output       tmds_clk_p,
-	    output [2:0] tmds_d_n,
-	    output [2:0] tmds_d_p,
+	    // output       tmds_clk_n,
+	    // output       tmds_clk_p,
+	    // output [2:0] tmds_d_n,
+	    // output [2:0] tmds_d_p,
 
 		// VGA
 		output [2:0] vga_r,
@@ -123,75 +123,7 @@ module FlappyBird_tangnano20k
 
 
 	// DVI video
-	svo_hdmi_out u_hdmi (
-	   .resetn		(~SW2),
-	   //video clocks
-	   .clk_pixel	(clk_p),
-	   .clk_5x_pixel(clk_p5),
-	   .locked		(pll_lock),
-		//input VGA
-	   .rout		({6{red}}),
-	   .gout		({6{green}}),
-	   .bout		({6{blue}}),
-	   .hsync_n		(~hsync),
-	   .vsync_n		(~vsync),
-	   .hblnk_n		(~hblank),
-	   //output signals
-	   .tmds_clk_n	(tmds_clk_n),
-	   .tmds_clk_p	(tmds_clk_p),
-	   .tmds_d_n	(tmds_d_n),
-	   .tmds_d_p	(tmds_d_p),
-	   .tmds_ts		()
-	);
 
-
-//    wire [5:0] VGA_R6, VGA_G6, VGA_B6;
-//    wire vdma_tvalid;
-//    wire vdma_tready;
-//    wire [24-1:0] vdma_tdata;	// SVO_BITS_PER_PIXEL = 24
-//    wire [0:0] vdma_tuser;
-//    wire [3:0] enc_tuser;
-//    wire hsync_ns,vsync_ns;
-//    wire hblnk;
-
-//    wire pll_lock;
-//    wire breset = SW1;
-//    wire resetn = 1'b1;
-//    wire clk_pixel = clk_p;
-//    wire clk_p;
-//    wire clk_p5;
-
-//    // Adjust Hsync & Vsync Position
-//    assign hsync_n = hsync_ns;
-//    //assign vsync_n = vsync_ns;
-//    reg vsync_n; 
-
-//    reg hblnk_n;
-
-
-// 	wire hblnk_ns;
-// 	reg hblnk_nsd, hsync_nsd;
-// 	reg [5:0] hblnk_dct;
-// 	reg [15:0] hblnk_sft;
-
-// 	always @ (posedge clk_pixel) begin
-// 		//hblnk_sft <= { hblnk_sft[14:0], hblnk_ns};
-// 		//hblnk_n <= hblnk_sft[15];
-// 		hblnk_nsd <= hblnk_ns;
-// 		if(hblnk_ns!=hblnk_nsd) hblnk_dct <= 18;
-// 		else begin
-// 			if(hblnk_dct==1) begin
-// 				hblnk_n <= hblnk_ns;
-// 			end
-// 			hblnk_dct <= hblnk_dct - 1;
-// 		end
-// 		//
-// 		hsync_nsd <= hsync_ns;
-// 		if(hsync_ns && ~hsync_nsd) vsync_n <= vsync_ns;
-// 	end
-
-// 	reg [7:0] pixel_div;
-// 	always @ (posedge clk_pixel) pixel_div <= pixel_div + 1;
-
+	
 
 endmodule

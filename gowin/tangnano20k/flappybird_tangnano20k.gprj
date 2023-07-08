@@ -9,10 +9,6 @@
         <File path="src/flappybird_tangnano20k.v" type="file.verilog" enable="1"/>
         <File path="src/gowin_clkdiv/gowin_clkdiv.v" type="file.verilog" enable="1"/>
         <File path="src/gowin_rpll/gowin_rpll.v" type="file.verilog" enable="1"/>
-        <File path="src/hdmi/svo_enc.v" type="file.verilog" enable="1"/>
-        <File path="src/hdmi/svo_hdmi_out.v" type="file.verilog" enable="1"/>
-        <File path="src/hdmi/svo_tcard.v" type="file.verilog" enable="1"/>
-        <File path="src/hdmi/svo_tmds.v" type="file.verilog" enable="1"/>
         <File path="../../rtl/DrawBackground.v" type="file.verilog" enable="1"/>
         <File path="../../rtl/DrawBird.v" type="file.verilog" enable="1"/>
         <File path="../../rtl/DrawBoard.v" type="file.verilog" enable="1"/>
