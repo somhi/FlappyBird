@@ -73,12 +73,6 @@ module FlappyBird_tangnano20k
 		.Speaker	(speaker)
 	);
 
-	// video
-	assign vga_r  = {3{red}};
-	assign vga_g  = {3{green}};
-	assign vga_b  = {3{blue}};
-	assign vga_hs = hsync;
-	assign vga_vs = vsync;
 
 	// audio
 	// wire [15:0] audio = {1'b0, speaker, 14'd0};
@@ -120,6 +114,36 @@ module FlappyBird_tangnano20k
 	);
 	
 
+	// VGA video
+	assign vga_r  = {3{red}};
+	assign vga_g  = {3{green}};
+	assign vga_b  = {3{blue}};
+	assign vga_hs = hsync;
+	assign vga_vs = vsync;
+
+
+	// DVI video
+	svo_hdmi_out u_hdmi (
+	   .resetn		(~SW2),
+	   //video clocks
+	   .clk_pixel	(clk_p),
+	   .clk_5x_pixel(clk_p5),
+	   .locked		(pll_lock),
+		//input VGA
+	   .rout		({6{red}}),
+	   .gout		({6{green}}),
+	   .bout		({6{blue}}),
+	   .hsync_n		(~hsync),
+	   .vsync_n		(~vsync),
+	   .hblnk_n		(~hblank),
+	   //output signals
+	   .tmds_clk_n	(tmds_clk_n),
+	   .tmds_clk_p	(tmds_clk_p),
+	   .tmds_d_n	(tmds_d_n),
+	   .tmds_d_p	(tmds_d_p),
+	   .tmds_ts		()
+	);
+
 
 //    wire [5:0] VGA_R6, VGA_G6, VGA_B6;
 //    wire vdma_tvalid;
@@ -144,33 +168,6 @@ module FlappyBird_tangnano20k
 
 //    reg hblnk_n;
 
-//    svo_hdmi_out u_hdmi (
-// 	  //.clk(clk_p),
-// 	  .resetn(~breset),//(sys_resetn),
-// 	  // video clocks
-// 	  .clk_pixel(clk_p),
-// 	  .clk_5x_pixel(clk_p5),
-// 	  .locked(pll_lock),
-//  	  // input VGA
-// 	  .rout(VGA_R6),
-// 	  .gout(VGA_G6),
-// 	  .bout(VGA_B6),
-// 	  .hsync_n(hsync_n),
-// 	  .vsync_n(vsync_n),
-// 	  .hblnk_n(hblnk_n),
-// 	  // output signals
-// 	  .tmds_clk_n(tmds_clk_n),
-// 	  .tmds_clk_p(tmds_clk_p),
-// 	  .tmds_d_n(tmds_d_n),
-// 	  .tmds_d_p(tmds_d_p),
-// 	  .tmds_ts()
-//    );
-
-// 	assign vga_r  = VGA_R6[5:3];
-// 	assign vga_g  = VGA_G6[5:3];
-// 	assign vga_b  = VGA_B6[5:3];
-// 	assign vga_hs = hsync_n;
-// 	assign vga_vs = vsync_n;
 
 // 	wire hblnk_ns;
 // 	reg hblnk_nsd, hsync_nsd;
