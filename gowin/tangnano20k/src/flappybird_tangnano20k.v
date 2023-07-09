@@ -22,6 +22,13 @@ module FlappyBird_tangnano20k
 		output 	pwm_audio_out_l,
 		output 	pwm_audio_out_r,
 
+
+		// I2S
+		output 	I2S_DIN,
+		output 	I2S_LRCK,
+		output 	I2S_BCLK,
+		output 	I2S_EN,
+
         // PS2
 		inout 	ps2_clk,
 		inout 	ps2_dat,
@@ -74,10 +81,24 @@ module FlappyBird_tangnano20k
 	);
 
 
-	// audio
-	// wire [15:0] audio = {1'b0, speaker, 14'd0};
+	// audio PCM
 	assign pwm_audio_out_l = speaker;
 	assign pwm_audio_out_r = speaker;
+
+	// audio I2S
+	wire [15:0] audio = {1'b0, speaker, 14'd0};
+	assign I2S_EN = 1'b1;
+	
+	audio_top audio_i2s (
+		.clk_50MHz (clk_p),
+		.dac_MCLK  (),
+		.dac_SCLK  (I2S_BCLK),
+		.dac_SDIN  (I2S_DIN),
+		.dac_LRCK  (I2S_LRCK),
+		.L_data    (audio),
+		.R_data    (audio)
+	);
+
 
 	// Dualshock controller
 	 /*
