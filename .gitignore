@@ -41,5 +41,7 @@ c5_pin_model_dump.txt
 *.asm
 controller.bin
 controller.map
-impl
+gwsynthesis
+pnr
+temp
 *.gprj.user
